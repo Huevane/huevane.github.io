@@ -6,11 +6,11 @@
 <title>Huevane 綄彩</title>
 <meta name="description" content="Huevane 綄彩：一面会转向的染色风向标。MindResort 心境度假村的出品方。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;900&family=IBM+Plex+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;600;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a bolt of raw silk — dye ribbons drift across the whole sheet like cloth hung to dry; the name is stamped on top like a dyer's seal, dye swatches along the hem */
+/* Layout: a bolt of raw silk. The first screen is the dye yard (ribbons drifting in the wind, the name stamped like a dyer's seal); below it the cloth is unrolled section by section: the name, the dye book, the mixing vat, and the residents */
 :root{
-  --silk:#f1ece1; --silk-2:#e6dfcf; --ink:#1d1a22; --muted:#6e675c; --seal:#b3342a;
+  --silk:#f1ece1; --silk-2:#e7e0d0; --ink:#1d1a22; --muted:#6e675c; --rule:rgba(29,26,34,.22); --seal:#b3342a;
   --indigo:#2c4a7a; --madder:#b8443a; --gardenia:#e2a83a; --sappan:#8c2f55; --verdigris:#3f8a7c; --murasaki:#5d4486;
   --f-latin:"Instrument Serif","Cormorant Garamond",Georgia,serif;
   --f-cjk:"Noto Serif SC","Songti SC","STSong",serif;
@@ -18,139 +18,328 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html,body{height:100%}
 html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--silk)}
 body{margin:0;background:var(--silk);color:var(--ink);font-family:var(--f-cjk);overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--seal);outline-offset:3px}
-
-#cloth{position:fixed;inset:0;width:100%;height:100%;display:block}
-.grain{position:fixed;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;z-index:5;
   background-image:repeating-linear-gradient(0deg,rgba(80,60,30,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(80,60,30,.03) 0 1px,transparent 1px 4px)}
+.wrap{position:relative;max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 
-.page{position:relative;min-height:100%;display:grid;grid-template-rows:auto 1fr auto;gap:24px;max-width:1180px;margin:0 auto;padding-block:22px 26px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-
+/* ---- yard (first screen) ---- */
+.yard{position:relative;min-height:min(92svh,900px);display:grid}
+#cloth{position:absolute;inset:0;width:100%;height:100%;display:block}
+.yard .wrap{width:100%;display:grid;grid-template-rows:auto 1fr auto;gap:24px;padding-block:22px 26px}
 .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.top nav{display:flex;gap:18px;flex-wrap:wrap}
 .top a{text-decoration:none}
 .top a:hover{color:var(--ink)}
-
 .mark{align-self:center;display:grid;gap:18px;justify-items:start}
-.name{margin:0;font-family:var(--f-latin);font-weight:400;font-size:clamp(76px,17vw,220px);line-height:.82;letter-spacing:-.035em;color:var(--ink)}
+.name{margin:0;font-family:var(--f-latin);font-weight:400;font-size:clamp(76px,17vw,220px);line-height:.82;letter-spacing:-.035em}
 .name i{font-style:italic}
 .row{display:flex;align-items:center;gap:clamp(14px,2.4vw,28px);flex-wrap:wrap}
 .seal{display:grid;place-items:center;width:clamp(78px,10vw,108px);aspect-ratio:1;max-width:100%;background:var(--seal);color:var(--silk);border-radius:6px;font-family:var(--f-cjk);font-weight:900;font-size:clamp(28px,3.6vw,40px);line-height:1.02;writing-mode:vertical-rl;letter-spacing:.06em;box-shadow:inset 0 0 0 3px var(--seal),inset 0 0 0 5px rgba(241,236,225,.55);transform:rotate(-3deg)}
 .gloss{display:grid;gap:6px;max-width:34ch}
 .gloss p{margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.85;text-wrap:pretty}
 .gloss .def{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--muted);line-height:1.7}
-.gloss .def b{font-weight:400;color:var(--ink)}
+.gloss .def b{font-weight:500;color:var(--ink)}
+.yard-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--muted)}
+.yard-foot b{font-weight:500;color:var(--ink)}
 
-.hem{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:end;border-top:1px solid rgba(29,26,34,.25);padding-top:18px}
-.swatches{display:flex;gap:10px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
-.swatches li{display:grid;gap:4px;justify-items:start;font-size:13px}
-.swatches span{display:block;width:44px;height:18px;border-radius:2px;background:var(--c)}
-.swatches small{font-family:var(--f-mono);font-size:10px;color:var(--muted);letter-spacing:.06em}
-.houses{display:grid;gap:8px;justify-items:end;text-align:right}
-.houses .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.houses a{display:flex;align-items:baseline;gap:12px;text-decoration:none;font-size:18px;padding:4px 0;border-bottom:1px solid transparent}
-.houses a:hover{border-bottom-color:var(--ink)}
-.houses a em{font-family:var(--f-latin);font-style:italic;font-size:22px}
-.houses a small{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+/* ---- unrolled sections ---- */
+.bolt{position:relative;background:var(--silk);border-top:1px solid var(--rule)}
+.sec{padding-block:clamp(56px,8vw,96px);display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px 48px;border-bottom:1px solid var(--rule)}
+.sec>header{display:grid;gap:8px;align-content:start}
+.sec .no{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.sec h2{margin:0;font-family:var(--f-cjk);font-weight:900;font-size:clamp(28px,3.4vw,40px);letter-spacing:.08em;line-height:1.15;text-wrap:balance}
+.sec h2 small{display:block;font-family:var(--f-latin);font-style:italic;font-weight:400;font-size:.62em;letter-spacing:0;color:var(--muted);margin-top:6px}
+.body{min-width:0}
 
-.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+/* 01 name */
+.etym{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--rule)}
+.etym>div{padding:22px 24px;display:grid;gap:8px;align-content:start;min-width:0}
+.etym>div:nth-child(odd){border-right:1px solid var(--rule)}
+.etym>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+.etym .g{font-family:var(--f-latin);font-size:clamp(44px,6vw,64px);line-height:.9}
+.etym .g.cjk{font-family:var(--f-cjk);font-weight:900;font-size:clamp(38px,5vw,54px)}
+.etym .g small{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-left:8px;letter-spacing:.06em}
+.etym p{margin:0;font-size:15px;line-height:1.8;text-wrap:pretty}
+.etym .src{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.02em}
+.creed{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:14px;max-width:56ch}
+.creed li{display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:8px;font-size:clamp(17px,1.9vw,20px);line-height:1.7}
+.creed li span{font-family:var(--f-latin);font-style:italic;color:var(--seal)}
 
-@media (max-width:760px){
-  .hem{grid-template-columns:minmax(0,1fr)}
-  .houses{justify-items:start;text-align:left}
-  .swatches span{width:36px}
+/* 02 dye book */
+.book{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.dye{display:grid;grid-template-rows:auto 1fr;text-align:left;font:inherit;color:inherit;background:var(--silk);border:1px solid var(--rule);padding:0;cursor:pointer;transition:transform .2s,box-shadow .2s;min-width:0}
+.dye:hover{transform:translateY(-3px);box-shadow:0 10px 24px -14px rgba(29,26,34,.45)}
+.dye[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.dye .sw{height:96px;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0 2px,transparent 2px 5px),
+  linear-gradient(170deg,color-mix(in srgb,var(--c) 70%,var(--silk)) 0%,var(--c) 55%,color-mix(in srgb,var(--c) 82%,#000) 100%);
+  background-color:var(--c)}
+.dye .tx{padding:14px 16px 16px;display:grid;gap:6px;align-content:start}
+.dye h3{margin:0;display:flex;align-items:baseline;gap:10px;font-size:22px;font-weight:900;letter-spacing:.08em}
+.dye h3 small{font-family:var(--f-latin);font-style:italic;font-weight:400;font-size:17px;letter-spacing:0;color:var(--muted)}
+.dye p{margin:0;font-size:14px;line-height:1.75;color:var(--ink);text-wrap:pretty}
+.dye .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.04em;margin-top:4px}
+.book-note{margin:16px 0 0;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+/* 03 vat */
+.vat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+.ctl{display:grid;gap:18px;min-width:0}
+.pick{display:grid;gap:8px}
+.pick .lab{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;border-radius:999px}
+.chip i{width:14px;height:14px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{border-color:var(--ink);background:rgba(29,26,34,.06);font-weight:600}
+.str{display:grid;grid-template-columns:auto minmax(0,1fr) 3.4em;gap:12px;align-items:center;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.str input{width:100%;accent-color:var(--seal)}
+.str output{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.stage{position:relative;aspect-ratio:1.25;max-width:100%;isolation:isolate;background:var(--silk-2);border:1px solid var(--rule)}
+.blob{position:absolute;top:14%;width:52%;aspect-ratio:1;border-radius:50%;mix-blend-mode:multiply;transition:background .3s}
+.blob.a{left:12%}
+.blob.b{right:12%}
+.result{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.result .sw{width:56px;height:56px;border:1px solid var(--rule)}
+.result b{display:block;font-size:20px;letter-spacing:.06em}
+.result code{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.vat-note{margin:0;font-size:14px;line-height:1.8;color:var(--muted);max-width:46ch}
+
+/* 04 residents */
+.res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.house{display:grid;gap:14px;align-content:start;padding:24px;border:1px solid var(--rule);background:var(--silk);text-decoration:none;min-width:0;transition:border-color .2s}
+a.house:hover{border-color:var(--ink)}
+.house .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.house h3{margin:0;font-family:var(--f-latin);font-weight:400;font-size:clamp(36px,4.4vw,48px);line-height:.95}
+.house h3 small{font-family:var(--f-cjk);font-size:16px;font-weight:600;letter-spacing:.1em;margin-left:10px;color:var(--muted)}
+.house p{margin:0;font-size:15px;line-height:1.8;text-wrap:pretty}
+.house ul{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--rule)}
+.house li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.house li span:last-child{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
+.house.quiet{border-style:dashed;color:var(--muted)}
+.house.quiet h3{color:var(--ink)}
+
+.foot{padding-block:28px 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+
+@media (max-width:860px){
+  .sec{grid-template-columns:minmax(0,1fr)}
+  .book{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vat{grid-template-columns:minmax(0,1fr)}
 }
+@media (max-width:560px){
+  .etym,.res,.book{grid-template-columns:minmax(0,1fr)}
+  .etym>div:nth-child(odd){border-right:0}
+  .etym>div:not(:last-child){border-bottom:1px solid var(--rule)}
+  .dye .sw{height:64px}
+  .top nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){.dye,.blob{transition:none}}
 </style>
 </head>
 <body>
-<canvas id="cloth" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 
-<div class="page">
-  <header class="top">
-    <span>Huevane · 綄彩</span>
-    <a href="https://github.com/Huevane" rel="noopener">github.com/Huevane</a>
-  </header>
-
-  <main class="mark">
-    <h1 class="name">Hue<i>vane</i></h1>
-    <div class="row">
-      <div class="seal" aria-label="印章：綄彩">綄彩</div>
-      <div class="gloss">
-        <p>一面会转向的染色风向标。风往哪边吹，颜色就往哪边走。</p>
-        <p class="def"><b>hue</b> 色相 ＋ <b>vane</b> 风向标<br><b>綄</b> 丝线 ＋ <b>彩</b> 染色</p>
+<section class="yard">
+  <canvas id="cloth" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <header class="top">
+      <span>Huevane · 綄彩</span>
+      <nav><a href="#name">名字</a><a href="#book">色卡</a><a href="#vat">叠染</a><a href="#res">驻地</a></nav>
+    </header>
+    <main class="mark">
+      <h1 class="name">Hue<i>vane</i></h1>
+      <div class="row">
+        <div class="seal" aria-label="印章：綄彩">綄彩</div>
+        <div class="gloss">
+          <p>一面会转向的染色风向标。风往哪边吹，颜色就往哪边走。</p>
+          <p class="def"><b>hue</b> 色相 ＝ <b>彩</b><br><b>vane</b> 风向标 ＝ <b>綄</b></p>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <div class="yard-foot"><span>移动鼠标或手指，改变风向</span><span>当前 <b id="windTxt">东南风 · 二级</b></span></div>
+  </div>
+</section>
 
-  <footer>
-    <div class="hem">
-      <ul class="swatches" aria-label="染料">
-        <li style="--c:var(--indigo)"><span></span>靛青<small>INDIGO</small></li>
-        <li style="--c:var(--madder)"><span></span>茜红<small>MADDER</small></li>
-        <li style="--c:var(--gardenia)"><span></span>栀黄<small>GARDENIA</small></li>
-        <li style="--c:var(--sappan)"><span></span>苏枋<small>SAPPAN</small></li>
-        <li style="--c:var(--verdigris)"><span></span>铜绿<small>VERDIGRIS</small></li>
-        <li style="--c:var(--murasaki)"><span></span>紫草<small>GROMWELL</small></li>
-      </ul>
-      <nav class="houses" aria-label="旗下">
-        <span class="k">驻地 · Residents</span>
-        <a href="https://mindresort.github.io/"><em>MindResort</em>心境度假村<small>→</small></a>
-        <a href="https://wongary.github.io/"><em>WonGary</em>个人站<small>→</small></a>
-      </nav>
-    </div>
-    <div class="foot" style="margin-top:16px"><span>© 2026 Huevane 綄彩</span><span>移动鼠标或手指，改变风向</span></div>
-  </footer>
+<div class="bolt">
+  <div class="wrap">
+
+    <section class="sec" id="name">
+      <header><span class="no">01 · NAME</span><h2>名字<small>Hue + Vane</small></h2></header>
+      <div class="body">
+        <div class="etym">
+          <div>
+            <div class="g">Hue<small>/hjuː/</small></div>
+            <p>色相。颜色之所以是这个颜色，而不是别的颜色。</p>
+          </div>
+          <div>
+            <div class="g">Vane<small>/veɪn/</small></div>
+            <p>风向标。屋顶上那片会转的铁皮，风从哪来，它就指向哪。</p>
+          </div>
+          <div>
+            <div class="g cjk">綄<small>huán</small></div>
+            <p>古时船上测风的器具：把羽毛系在桅杆顶上，看它往哪边飘。楚地叫它“五两”。</p>
+            <span class="src">字书释：綄，候风羽，楚谓之五两。</span>
+          </div>
+          <div>
+            <div class="g cjk">彩<small>cǎi</small></div>
+            <p>颜色，也是染过色的丝织品。“彩帛”就是染了色的绸。</p>
+          </div>
+        </div>
+        <ol class="creed">
+          <li><span>i.</span>綄是丝做的风向标，彩是染过色的丝。两个字合起来，就是一面染了色的綄。</li>
+          <li><span>ii.</span>做东西就像看綄：先看风往哪边吹，再决定往哪走。</li>
+          <li><span>iii.</span>做出来的每一样东西，都染上一点自己的颜色。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="book">
+      <header><span class="no">02 · DYE BOOK</span><h2>色卡<small>Six dyes</small></h2></header>
+      <div class="body">
+        <div class="book" id="bookList"></div>
+        <p class="book-note">点一张色卡，上方的布会只留下这一种颜色；再点一次恢复。</p>
+      </div>
+    </section>
+
+    <section class="sec" id="vat">
+      <header><span class="no">03 · VAT</span><h2>叠染<small>Over-dyeing</small></h2></header>
+      <div class="body vat">
+        <div class="ctl">
+          <div class="pick"><span class="lab">第一缸 · 打底</span><div class="chips" id="pickA"></div></div>
+          <div class="pick"><span class="lab">第二缸 · 套染</span><div class="chips" id="pickB"></div></div>
+          <label class="str" for="strength">浓度<input type="range" id="strength" min="20" max="100" value="70"><output id="strOut">70%</output></label>
+          <p class="vat-note">真实的叠染里，靛青打底、再套一缸栀黄，就能染出绿色。古人的很多绿和紫都是这样两缸染出来的。这里用颜色相乘来近似这个效果。</p>
+        </div>
+        <div>
+          <div class="stage" aria-hidden="true"><div class="blob a" id="blobA"></div><div class="blob b" id="blobB"></div></div>
+          <div class="result"><div class="sw" id="mixSw"></div><div><b id="mixName">靛青 × 栀黄</b><code id="mixHex">#000000</code></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="res">
+      <header><span class="no">04 · RESIDENTS</span><h2>驻地<small>Who lives here</small></h2></header>
+      <div class="body res">
+        <a class="house" href="https://mindresort.github.io/">
+          <span class="k">MINDRESORT · 心境度假村</span>
+          <h3>MindResort<small>心境度假村</small></h3>
+          <p>小游戏、小工具和兴趣爱好。每个作品是一个房间，打开就能用，手机也行。</p>
+          <ul>
+            <li><span>ROOM 101 · 掼蛋牌桌</span><span>上线</span></li>
+            <li><span>ROOM 102</span><span>装修中</span></li>
+            <li><span>ROOM 103</span><span>空房</span></li>
+          </ul>
+        </a>
+        <a class="house quiet" href="https://wongary.github.io/">
+          <span class="k">WONGARY · 个人站</span>
+          <h3>WonGary<small>个人站</small></h3>
+          <p>个人主页，正在搭建中。</p>
+          <ul>
+            <li><span>主页</span><span>施工中</span></li>
+          </ul>
+        </a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>© 2026 Huevane 綄彩</span>
+      <span><a href="https://github.com/Huevane" rel="noopener">github.com/Huevane</a></span>
+    </footer>
+  </div>
 </div>
 
 <script>
 (()=>{
-  const cv=document.getElementById('cloth'),ctx=cv.getContext('2d');
   const css=getComputedStyle(document.documentElement);
-  const dyes=['--indigo','--madder','--gardenia','--sappan','--verdigris','--murasaki'].map(v=>css.getPropertyValue(v).trim());
+  const DYES=[
+    {k:'indigo',n:'靛青',en:'Indigo',src:'蓼蓝、马蓝的叶',how:'叶子沤成靛泥，下缸染后拿出来见空气，才从黄绿慢慢变蓝。'},
+    {k:'madder',n:'茜红',en:'Madder',src:'茜草的根',how:'根煮出色液，要加明矾做媒染，红才挂得住、洗不掉。'},
+    {k:'gardenia',n:'栀黄',en:'Gardenia',src:'栀子的果',how:'果实捣碎煮水就能直接染，是最省事的一种黄。'},
+    {k:'sappan',n:'苏枋',en:'Sappan',src:'苏木的心材',how:'同一缸色液，换不同的媒染剂，能从红一路染到紫。'},
+    {k:'verdigris',n:'铜绿',en:'Verdigris',src:'铜器生的锈',how:'它不是植物染料，是一种矿物颜料，过去多用来画画。'},
+    {k:'murasaki',n:'紫草',en:'Gromwell',src:'紫草的根',how:'根里的紫色要低温慢慢浸出，染一次不深，过去紫衣很贵。'},
+  ].map(d=>({...d,c:css.getPropertyValue('--'+d.k).trim()}));
+  const SILK=css.getPropertyValue('--silk').trim();
+
+  /* ---------- cloth ---------- */
+  const cv=document.getElementById('cloth'),ctx=cv.getContext('2d');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W=0,H=0,dpr=1,t=0,wind=0.35,windT=0.35,last=0;
-  // each ribbon: base height, amplitude, frequencies, phase, width, colour
-  const R=dyes.map((c,i)=>({c,y:.14+i*.14+(i%2?.03:-.02),a:.06+.025*(i%3),f1:1.1+.37*i,f2:2.3+.21*i,p:i*1.7,w:.05+.018*((i*7)%4),s:.6+.13*i}));
-  function size(){dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  let W=0,H=0,t=2.4,wind=.35,windT=.35,last=0,focus=-1;
+  const R=DYES.map((d,i)=>({c:d.c,y:.14+i*.14+(i%2?.03:-.02),a:.06+.025*(i%3),f1:1.1+.37*i,f2:2.3+.21*i,p:i*1.7,w:.05+.018*((i*7)%4),s:.6+.13*i,al:.46}));
+  function size(){const dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
   function draw(){
-    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
-    ctx.globalCompositeOperation='multiply';
+    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='multiply';
     const N=Math.max(40,Math.round(W/14)),narrow=W<760;
-    for(const r of R){
-      const top=[],bot=[];
-      for(let k=0;k<=N;k++){
-        const u=k/N,x=u*W;
-        const ph=t*r.s*wind;
+    R.forEach((r,i)=>{
+      const target=focus<0?.46:(i===focus?.8:.06);r.al+=(target-r.al)*.08;
+      if(r.al<.02)return;
+      const top=[],bot=[],ph=t*r.s*wind,boost=focus===i?1.6:1;
+      for(let k=0;k<=N;k++){const u=k/N,x=u*W;
         const y=(r.y+r.a*Math.sin(u*r.f1*Math.PI*2+r.p+ph)+r.a*.45*Math.sin(u*r.f2*Math.PI*2-r.p*.7+ph*1.6))*H;
-        // ribbon twists: width swells and pinches like hanging silk
         const tw=Math.sin(u*Math.PI*(1.4+r.f1*.3)+r.p*1.3+ph*.8);
-        const w=r.w*H*(narrow?.75:1)*(.18+.82*Math.abs(tw));
-        top.push([x,y-w/2]);bot.push([x,y+w/2]);
-      }
+        const w=r.w*boost*H*(narrow?.75:1)*(.18+.82*Math.abs(tw));
+        top.push([x,y-w/2]);bot.push([x,y+w/2]);}
       ctx.beginPath();ctx.moveTo(top[0][0],top[0][1]);
       for(let k=1;k<top.length;k++){const a=top[k-1],b=top[k];ctx.quadraticCurveTo(a[0],a[1],(a[0]+b[0])/2,(a[1]+b[1])/2);}
       for(let k=bot.length-1;k>=0;k--)ctx.lineTo(bot[k][0],bot[k][1]);
-      ctx.closePath();
-      ctx.globalAlpha=.46;ctx.fillStyle=r.c;ctx.fill();
-      ctx.globalAlpha=.22;ctx.lineWidth=1;ctx.strokeStyle=r.c;ctx.stroke();
-    }
+      ctx.closePath();ctx.globalAlpha=r.al;ctx.fillStyle=r.c;ctx.fill();
+      ctx.globalAlpha=r.al*.48;ctx.lineWidth=1;ctx.strokeStyle=r.c;ctx.stroke();
+    });
     ctx.globalAlpha=1;
   }
-  function frame(now){
-    const dt=Math.min(50,now-(last||now));last=now;
-    wind+=(windT-wind)*.04;t+=dt/1000;
-    draw();requestAnimationFrame(frame);
+  const DIRS=['北风','东北风','东风','东南风','南风','西南风','西风','西北风'];
+  const windTxt=document.getElementById('windTxt');
+  function frame(now){const dt=Math.min(50,now-(last||now));last=now;wind+=(windT-wind)*.04;t+=dt/1000;draw();requestAnimationFrame(frame);}
+  function steer(x,y){
+    const fx=x/Math.max(1,innerWidth),fy=y/Math.max(1,innerHeight);
+    windT=.15+1.1*fx;
+    const dir=DIRS[Math.round((Math.atan2(fx-.5,.5-fy)/(Math.PI*2)+1)*8)%8];
+    windTxt.textContent=`${dir} · ${['一','二','三','四','五'][Math.min(4,Math.floor(fx*5))]}级`;
   }
-  const steer=x=>{windT=.15+1.1*(x/Math.max(1,innerWidth));};
-  addEventListener('pointermove',e=>steer(e.clientX),{passive:true});
-  addEventListener('touchmove',e=>{if(e.touches[0])steer(e.touches[0].clientX);},{passive:true});
+  addEventListener('pointermove',e=>steer(e.clientX,e.clientY),{passive:true});
+  addEventListener('touchmove',e=>{if(e.touches[0])steer(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
   addEventListener('resize',()=>{size();draw();});
-  size();t=2.4;draw();
+  size();draw();
   if(!reduce)requestAnimationFrame(frame);
+
+  /* ---------- dye book ---------- */
+  const book=document.getElementById('bookList');
+  book.innerHTML=DYES.map((d,i)=>`<button class="dye" style="--c:${d.c}" data-i="${i}" aria-pressed="false">
+    <span class="sw"></span>
+    <span class="tx"><h3>${d.n}<small>${d.en}</small></h3><p>${d.how}</p><span class="meta"><span>取自 ${d.src}</span><span>${d.c.toUpperCase()}</span></span></span></button>`).join('');
+  book.addEventListener('click',e=>{const b=e.target.closest('.dye');if(!b)return;const i=+b.dataset.i;
+    focus=focus===i?-1:i;
+    book.querySelectorAll('.dye').forEach(x=>x.setAttribute('aria-pressed',String(+x.dataset.i===focus)));
+    if(reduce){R.forEach((r,j)=>r.al=focus<0?.46:(j===focus?.8:.06));draw();}
+    document.querySelector('.yard').scrollIntoView({behavior:reduce?'auto':'smooth'});});
+
+  /* ---------- vat ---------- */
+  const hex2=h=>{h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
+  const toHex=a=>'#'+a.map(v=>Math.round(v).toString(16).padStart(2,'0')).join('');
+  const silk=hex2(SILK);
+  const at=(c,s)=>hex2(c).map((v,i)=>silk[i]+(v-silk[i])*s);
+  let A=0,B=2;
+  const chipHTML=(sel)=>DYES.map((d,i)=>`<button class="chip" style="--c:${d.c}" data-i="${i}" aria-pressed="${i===sel}"><i></i>${d.n}</button>`).join('');
+  const pa=document.getElementById('pickA'),pb=document.getElementById('pickB'),st=document.getElementById('strength');
+  function mix(){
+    pa.innerHTML=chipHTML(A);pb.innerHTML=chipHTML(B);
+    const s=st.value/100;document.getElementById('strOut').textContent=st.value+'%';
+    const a=at(DYES[A].c,s),b=at(DYES[B].c,s);
+    document.getElementById('blobA').style.background=toHex(a);
+    document.getElementById('blobB').style.background=toHex(b);
+    const out=a.map((v,i)=>v*b[i]/255);
+    document.getElementById('mixSw').style.background=toHex(out);
+    document.getElementById('mixHex').textContent=toHex(out).toUpperCase();
+    document.getElementById('mixName').textContent=A===B?`${DYES[A].n} 染两缸`:`${DYES[A].n} × ${DYES[B].n}`;
+  }
+  pa.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c){A=+c.dataset.i;mix();}});
+  pb.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c){B=+c.dataset.i;mix();}});
+  st.addEventListener('input',mix);
+  mix();
 })();
 </script>
 </body>
