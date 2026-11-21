@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<script>try{const t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Huevane 綄彩色</title>
 <meta name="description" content="Huevane 綄彩色：一面会转向的染色风向标。名字和色卡都配有对照原书核对过的古文。MindResort 心境度假村的出品方。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +16,7 @@
 /* Layout: a bolt of raw silk. The first screen is the dye yard (ribbons drifting in the wind, the name stamped like a dyer's seal); below it the cloth is unrolled section by section. Classical quotes, checked against the original texts, serve as the captions. */
 :root{
   --silk:#f1ece1; --silk-2:#e7e0d0; --ink:#1d1a22; --muted:#5f584e; --rule:rgba(29,26,34,.22); --seal:#b3342a;
+  --accent:#b3342a; --seal-ink:#f1ece1; --cloth:#f1ece1; --cloth-2:#e7e0d0; --grain-op:.5; --tint:rgba(29,26,34,.06);
   --indigo:#2c4a7a; --madder:#b8443a; --gardenia:#e2a83a; --sappan:#8c2f55; --jin:#7d8f3a; --zicao:#5d4486;
   --f-latin:"Instrument Serif","Cormorant Garamond",Georgia,serif;
   --f-cjk:"Noto Serif SC","Songti SC","STSong",serif;
@@ -22,12 +25,18 @@
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   color-scheme:light;
 }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --silk:#17161c; --silk-2:#211f27; --ink:#ece6d8; --muted:#a8a092; --rule:rgba(236,230,216,.2);
+  --accent:#e0675a; --grain-op:.18; --tint:rgba(236,230,216,.08); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --silk:#17161c; --silk-2:#211f27; --ink:#ece6d8; --muted:#a8a092; --rule:rgba(236,230,216,.2);
+  --accent:#e0675a; --grain-op:.18; --tint:rgba(236,230,216,.08); color-scheme:dark}
 *{box-sizing:border-box}
 html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--silk)}
 body{margin:0;background:var(--silk);color:var(--ink);font-family:var(--f-cjk);overflow-x:hidden}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
-.grain{position:fixed;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;z-index:5;
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:var(--grain-op);mix-blend-mode:multiply;z-index:5;
   background-image:repeating-linear-gradient(0deg,rgba(80,60,30,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(80,60,30,.03) 0 1px,transparent 1px 4px)}
 .wrap{position:relative;max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 
@@ -35,7 +44,7 @@ a{color:inherit}
 .q{margin:0;font-family:var(--f-old);font-size:16px;line-height:1.9;letter-spacing:.04em;text-wrap:pretty}
 .q cite{font-style:normal;font-family:var(--f-cjk);font-size:12.5px;letter-spacing:.04em;color:var(--muted);margin-right:.3em}
 .q.big{font-size:clamp(18px,2vw,21px);line-height:1.85}
-.quotes{display:grid;gap:10px;padding-left:14px;border-left:2px solid var(--seal)}
+.quotes{display:grid;gap:10px;padding-left:14px;border-left:2px solid var(--accent)}
 /* 雙行夾注: two short lines set in the run of text */
 .zhu{display:inline-flex;flex-direction:column;vertical-align:middle;font-size:.62em;line-height:1.3;letter-spacing:.02em;color:var(--muted);margin:0 .25em;white-space:nowrap}
 .zhu .r{display:block}
@@ -48,11 +57,16 @@ a{color:inherit}
 .top nav{display:flex;gap:18px;flex-wrap:wrap}
 .top a{text-decoration:none}
 .top a:hover{color:var(--ink)}
+.top .end{display:flex;align-items:center;gap:18px}
+.theme-tg{font:inherit;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 9px;border:1px solid var(--rule);border-radius:999px;background:transparent;color:inherit;cursor:pointer;white-space:nowrap}
+.theme-tg:hover{color:var(--ink);border-color:var(--ink)}
+.theme-tg i{width:12px;height:12px;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+
 .mark{align-self:center;display:grid;gap:18px;justify-items:start}
 .name{margin:0;font-family:var(--f-latin);font-weight:400;font-size:clamp(76px,17vw,220px);line-height:.82;letter-spacing:-.035em}
 .name i{font-style:italic}
 .row{display:flex;align-items:center;gap:clamp(14px,2.4vw,28px);flex-wrap:wrap}
-.seal{display:grid;grid-template-columns:repeat(2,auto);place-content:center;place-items:center;gap:.06em;flex:none;align-self:center;width:clamp(78px,10vw,108px);aspect-ratio:1;max-width:100%;background:var(--seal);color:var(--silk);border-radius:6px;font-family:var(--f-old-b);font-size:clamp(25px,3.3vw,36px);line-height:1;box-shadow:inset 0 0 0 3px var(--seal),inset 0 0 0 5px rgba(241,236,225,.55);transform:rotate(-3deg)}
+.seal{display:grid;grid-template-columns:repeat(2,auto);place-content:center;place-items:center;gap:.06em;flex:none;align-self:center;width:clamp(78px,10vw,108px);aspect-ratio:1;max-width:100%;background:var(--seal);color:var(--seal-ink);border-radius:6px;font-family:var(--f-old-b);font-size:clamp(25px,3.3vw,36px);line-height:1;box-shadow:inset 0 0 0 3px var(--seal),inset 0 0 0 5px rgba(241,236,225,.55);transform:rotate(-3deg)}
 .seal span{display:block}
 .seal span:nth-child(1){grid-area:1/2}.seal span:nth-child(2){grid-area:2/2}.seal span:nth-child(3){grid-area:1/1}.seal span:nth-child(4){grid-area:2/1}
 .gloss{display:grid;gap:8px;max-width:38ch}
@@ -86,7 +100,7 @@ a{color:inherit}
 .etym .q{font-size:15px}
 .creed{margin:0;padding:0;list-style:none;display:grid;gap:14px;max-width:58ch}
 .creed li{display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:8px;font-size:clamp(17px,1.9vw,20px);line-height:1.7}
-.creed li>span{font-family:var(--f-latin);font-style:italic;color:var(--seal)}
+.creed li>span{font-family:var(--f-latin);font-style:italic;color:var(--accent)}
 .creed .lat-name{font-family:var(--f-latin);font-style:italic}
 
 /* 02 dye book */
@@ -96,7 +110,7 @@ a{color:inherit}
 .dye button{display:grid;text-align:left;font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;min-width:0}
 .dye .sw{display:block;height:96px;background:
   repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0 2px,transparent 2px 5px),
-  linear-gradient(170deg,color-mix(in srgb,var(--c) 70%,var(--silk)) 0%,var(--c) 55%,color-mix(in srgb,var(--c) 82%,#000) 100%);
+  linear-gradient(170deg,color-mix(in srgb,var(--c) 70%,var(--cloth)) 0%,var(--c) 55%,color-mix(in srgb,var(--c) 82%,#000) 100%);
   background-color:var(--c);transition:filter .2s}
 .dye button:hover .sw{filter:saturate(1.15) brightness(1.04)}
 .dye .hd{display:grid;gap:4px;padding:14px 16px 0}
@@ -117,11 +131,11 @@ a{color:inherit}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chip{font:inherit;font-size:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;border-radius:999px}
 .chip i{width:14px;height:14px;border-radius:50%;background:var(--c)}
-.chip[aria-pressed="true"]{border-color:var(--ink);background:rgba(29,26,34,.06);font-weight:600}
+.chip[aria-pressed="true"]{border-color:var(--ink);background:var(--tint);font-weight:600}
 .dips{display:flex;align-items:center;gap:10px}
 .dips button{font:inherit;font-size:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer}
 .dips output{min-width:3em;text-align:center;font-family:var(--f-old);font-size:18px;letter-spacing:.1em}
-.stage{position:relative;aspect-ratio:1.25;max-width:100%;isolation:isolate;background:var(--silk-2);border:1px solid var(--rule)}
+.stage{position:relative;aspect-ratio:1.25;max-width:100%;isolation:isolate;background:var(--cloth-2);border:1px solid var(--rule)}
 .blob{position:absolute;top:14%;width:52%;aspect-ratio:1;border-radius:50%;mix-blend-mode:multiply;transition:background .3s}
 .blob.a{left:12%}
 .blob.b{right:12%}
@@ -139,9 +153,9 @@ a{color:inherit}
 .winds b{font-family:var(--f-old);font-weight:400;font-size:clamp(18px,2.4vw,24px);letter-spacing:.12em}
 .winds span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
 .winds .on{background:var(--ink);color:var(--silk)}
-.winds .on span{color:rgba(241,236,225,.8)}
+.winds .on span{color:color-mix(in srgb,var(--silk) 80%,transparent)}
 .winds .mid{background:var(--silk-2)}
-.winds .mid b{color:var(--seal);font-family:var(--f-old-b)}
+.winds .mid b{color:var(--accent);font-family:var(--f-old-b)}
 
 /* 05 residents */
 .res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
@@ -189,7 +203,7 @@ a.house:hover{border-color:var(--ink)}
   <div class="wrap">
     <header class="top">
       <span>Huevane · 綄彩色</span>
-      <nav><a href="#name">名字</a><a href="#book">色卡</a><a href="#vat">叠染</a><a href="#wind">八风</a><a href="#res">驻地</a></nav>
+      <div class="end"><nav><a href="#name">名字</a><a href="#book">色卡</a><a href="#vat">叠染</a><a href="#wind">八风</a><a href="#res">驻地</a></nav><button class="theme-tg" id="themeTg" type="button" aria-label="深色模式" aria-pressed="false"><i aria-hidden="true"></i><span>深色</span></button></div>
     </header>
     <main class="mark">
       <h1 class="name">Hue<i>vane</i></h1>
@@ -337,6 +351,14 @@ a.house:hover{border-color:var(--ink)}
 
 <script>
 (()=>{
+  const root=document.documentElement,tg=document.getElementById('themeTg'),mq=matchMedia('(prefers-color-scheme: dark)');
+  const cur=()=>root.dataset.theme||(mq.matches?'dark':'light');
+  const sync=()=>{const d=cur()==='dark';tg.setAttribute('aria-pressed',String(d));tg.querySelector('span').textContent=d?'浅色':'深色';tg.title=d?'切换到浅色':'切换到深色';dispatchEvent(new CustomEvent('themechange',{detail:cur()}));};
+  tg.addEventListener('click',()=>{const n=cur()==='dark'?'light':'dark';root.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}sync();});
+  mq.addEventListener('change',()=>{if(!root.dataset.theme)sync();});
+  sync();
+})();
+(()=>{
   const css=getComputedStyle(document.documentElement);
   const C=k=>css.getPropertyValue('--'+k).trim();
   const DYES=[
@@ -365,16 +387,19 @@ a.house:hover{border-color:var(--ink)}
      q:`<p class="q"><cite>《爾雅·釋草》</cite>藐，茈草。<span class="zhu"><span class="r">郭璞注：</span><span class="r">可以染紫。</span></span></p>
         <p class="q"><cite>《韓非子·外儲說左上》</cite>齊桓公好服紫，一國盡服紫。</p>`},
   ].map(d=>({...d,c:C(d.k)}));
-  const SILK=C('silk');
+  const SILK=C('cloth'); // undyed silk: the vat model always starts from the light cloth
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- cloth ---------- */
   const cv=document.getElementById('cloth'),ctx=cv.getContext('2d');
   let W=0,H=0,t=2.4,wind=.35,windT=.35,last=0,focus=-1;
-  const R=DYES.map((d,i)=>({c:d.c,y:.14+i*.14+(i%2?.03:-.02),a:.06+.025*(i%3),f1:1.1+.37*i,f2:2.3+.21*i,p:i*1.7,w:.05+.018*((i*7)%4),s:.6+.13*i,al:.46}));
+  const isDark=()=>(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
+  const lift=(h,k)=>'#'+[1,3,5].map(i=>Math.round(parseInt(h.slice(i,i+2),16)+(255-parseInt(h.slice(i,i+2),16))*k).toString(16).padStart(2,'0')).join('');
+  let dark=isDark();
+  const R=DYES.map((d,i)=>({base:d.c,c:dark?lift(d.c,.3):d.c,y:.14+i*.14+(i%2?.03:-.02),a:.06+.025*(i%3),f1:1.1+.37*i,f2:2.3+.21*i,p:i*1.7,w:.05+.018*((i*7)%4),s:.6+.13*i,al:.46}));
   function size(){const dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
   function draw(){
-    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='multiply';
+    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation=dark?'screen':'multiply';
     const N=Math.max(40,Math.round(W/14)),narrow=W<760;
     R.forEach((r,i)=>{
       const target=focus<0?.46:(i===focus?.8:.06);r.al+=(target-r.al)*.08;
@@ -412,6 +437,7 @@ a.house:hover{border-color:var(--ink)}
   addEventListener('pointermove',e=>steer(e.clientX,e.clientY),{passive:true});
   addEventListener('touchmove',e=>{if(e.touches[0])steer(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
   addEventListener('resize',()=>{size();draw();});
+  addEventListener('themechange',()=>{dark=isDark();R.forEach(r=>r.c=dark?lift(r.base,.3):r.base);draw();});
   setWind(3);
   size();draw();
   if(!reduce)requestAnimationFrame(frame);
