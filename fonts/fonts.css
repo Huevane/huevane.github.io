@@ -1,0 +1,4 @@
+/* Chiron Sung HK 昭源宋體, (c) 2021-2026 Tamcy, SIL Open Font License 1.1 (see OFL.txt).
+   Subset to the characters on index.html by tools/build_fonts.py. */
+@font-face{font-family:"Chiron Sung HK";src:url("chiron-n.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Chiron Sung HK B";src:url("chiron-b.woff2") format("woff2");font-weight:400;font-display:swap}

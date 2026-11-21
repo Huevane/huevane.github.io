@@ -1,0 +1,223 @@
+{
+ "note": "Every classical quote shown on index.html. 'text' is the exact on-page string (base-edition characters, punctuation added). 'source' is the Kanripo text ID (github.com/kanripo/<ID>); 'layer' is main (正文) or note (注文). Run python3 -I tools/verify_quotes.py to check each one against the original text and against index.html.",
+ "quotes": [
+  {
+   "id": "hnz",
+   "text": "故終身𨽻於人，辟若俔之見風也，無須㬰之間定矣。",
+   "source": "KR3j0010",
+   "layer": "main",
+   "cite": "《淮南子·齊俗訓》"
+  },
+  {
+   "id": "gao",
+   "text": "俔，候風者也，世所謂五兩。",
+   "source": "KR3j0010",
+   "layer": "note",
+   "cite": "注（四庫本題高誘注；《齊俗訓》注一般認為出自許慎）"
+  },
+  {
+   "id": "xushen",
+   "text": "綄，候風也，楚人謂之五兩也。",
+   "source": "KR4h0002",
+   "layer": "note",
+   "cite": "許慎《淮南子注》，李善注《文選·江賦》引"
+  },
+  {
+   "id": "jiangfu",
+   "text": "覘五兩之動靜。",
+   "source": "KR4h0001",
+   "layer": "main",
+   "cite": "郭璞《江賦》"
+  },
+  {
+   "id": "yupian",
+   "text": "候風五兩也",
+   "source": "KR1j0022",
+   "layer": "note",
+   "cite": "《玉篇·糸部》"
+  },
+  {
+   "id": "guangyun",
+   "text": "船上候風羽，楚謂之五兩。",
+   "source": "KR1j0055",
+   "layer": "note",
+   "cite": "《廣韻·桓韻》"
+  },
+  {
+   "id": "cai",
+   "text": "文章也",
+   "source": "KR1j0022",
+   "layer": "note",
+   "cite": "《玉篇·彡部》"
+  },
+  {
+   "id": "se",
+   "text": "顔气也",
+   "source": "KR1j0018",
+   "layer": "main",
+   "cite": "《說文解字·色部》"
+  },
+  {
+   "id": "xunzi",
+   "text": "青取之於藍，而青於藍。",
+   "source": "KR3a0002",
+   "layer": "main",
+   "cite": "《荀子·勸學》"
+  },
+  {
+   "id": "lan",
+   "text": "染青艸也",
+   "source": "KR1j0018",
+   "layer": "note",
+   "cite": "《說文解字·艸部》"
+  },
+  {
+   "id": "sou",
+   "text": "茅蒐，茹藘，人血所生，可以染絳。",
+   "source": "KR1j0018",
+   "layer": "note",
+   "cite": "《說文解字·艸部》"
+  },
+  {
+   "id": "tao",
+   "text": "此即今染絳茜草也。",
+   "source": "KR3e0079",
+   "layer": "note",
+   "cite": "陶弘景語，《本草綱目》卷十八下引"
+  },
+  {
+   "id": "hanshu",
+   "text": "若千畝巵茜，千畦薑韭，此其人皆與千户侯等。",
+   "source": "KR2a0007",
+   "layer": "main",
+   "cite": "《漢書·貨殖傳》"
+  },
+  {
+   "id": "mengkang",
+   "text": "茜草、巵子可用染也。",
+   "source": "KR2a0007",
+   "layer": "note",
+   "cite": "孟康注"
+  },
+  {
+   "id": "nanfang",
+   "text": "南人以染綘，漬以大庾之水，則色愈深。",
+   "source": "KR2k0104",
+   "layer": "main",
+   "cite": "嵇含《南方草木狀》卷中（底本作「綘」，即「絳」）"
+  },
+  {
+   "id": "sugong",
+   "text": "其木人用染絳色。",
+   "source": "KR3e0079",
+   "layer": "note",
+   "cite": "蘇恭語，《本草綱目》卷三十五下引"
+  },
+  {
+   "id": "cailu",
+   "text": "終朝采緑，不盈一匊。",
+   "source": "KR1c0002",
+   "layer": "main",
+   "cite": "《詩·小雅·采緑》"
+  },
+  {
+   "id": "maozhuan",
+   "text": "緑，王芻也。",
+   "source": "KR1c0002",
+   "layer": "note",
+   "cite": "鄭箋（底本作「竿云」，當為「箋云」）",
+   "note": "《采緑》此句下毛傳只釋「自旦及食時爲終朝，兩手曰匊」；「緑，王芻也」在《淇奥》毛傳，在《采緑》是鄭箋所云。"
+  },
+  {
+   "id": "shizhen",
+   "text": "此草緑色，可染黄，故曰黄、曰緑也。",
+   "source": "KR3e0079",
+   "layer": "note",
+   "cite": "李時珍語，《本草綱目》卷十六"
+  },
+  {
+   "id": "jingxiang",
+   "text": "荆襄人煮以染黄，色極鮮好。",
+   "source": "KR3e0079",
+   "layer": "note",
+   "cite": "蘇恭語，《本草綱目》卷十六引"
+  },
+  {
+   "id": "erya_zi",
+   "text": "藐，茈草。",
+   "source": "KR1j0002",
+   "layer": "main",
+   "cite": "《爾雅·釋草》"
+  },
+  {
+   "id": "guopu_zi",
+   "text": "可以染紫。",
+   "source": "KR1j0002",
+   "layer": "note",
+   "cite": "郭璞注"
+  },
+  {
+   "id": "hanfei",
+   "text": "齊桓公好服紫，一國盡服紫。",
+   "source": "KR3c0005",
+   "layer": "main",
+   "cite": "《韓非子·外儲說左上》"
+  },
+  {
+   "id": "erya_ran",
+   "text": "一染謂之縓，再染謂之赬，三染謂之纁。",
+   "source": "KR1j0002",
+   "layer": "main",
+   "cite": "《爾雅·釋器》"
+  },
+  {
+   "id": "guopu_ran",
+   "text": "今之紅也。",
+   "source": "KR1j0002",
+   "layer": "note",
+   "cite": "郭璞注"
+  },
+  {
+   "id": "zhongshi",
+   "text": "三入爲纁，五入爲緅，七入爲緇。",
+   "source": "KR1d0002",
+   "layer": "main",
+   "cite": "《周禮·考工記·鍾氏》"
+  },
+  {
+   "id": "zheng_ran",
+   "text": "染纁者三入而成，又再染以黑，則爲緅。",
+   "source": "KR1d0002",
+   "layer": "note",
+   "cite": "鄭玄注"
+  },
+  {
+   "id": "shangshu",
+   "text": "以五采彰施于五色，作服。",
+   "source": "KR1b0001",
+   "layer": "main",
+   "cite": "《尚書·益稷》"
+  },
+  {
+   "id": "bafeng",
+   "text": "八風也。東方曰明庶風，東南曰淸明風，南方曰景風，西南曰涼風，西方曰閶闔風，西北曰不周風，北方曰廣莫風，東北曰融風。",
+   "source": "KR1j0018",
+   "layer": "main",
+   "cite": "《說文解字·風部》"
+  },
+  {
+   "id": "zhangran",
+   "text": "掌以春秋斂染草之物。",
+   "source": "KR1d0002",
+   "layer": "main",
+   "cite": "《周禮·地官·掌染草》"
+  },
+  {
+   "id": "wucai",
+   "text": "五采備謂之繡。",
+   "source": "KR1d0002",
+   "layer": "main",
+   "cite": "《周禮·考工記》"
+  }
+ ]
+}
